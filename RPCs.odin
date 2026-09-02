@@ -3,7 +3,8 @@ package BF_REP
 
 import "core:log"
 
-/* //*[WEB INFO]
+/* 
+//*[WEB INFO]
 Remote Procedure Calls (RPCs) are primarily categorized by their communication behavior and execution model. 
 The most common classification distinguishes between Synchronous and Asynchronous RPCs.  In Synchronous RPC, the 
 client sends a request and blocks, waiting for the server to respond before continuing execution.  In Asynchronous 
@@ -28,9 +29,14 @@ Additionally, in specific frameworks like Unreal Engine, RPCs are categorized by
 *NetMulticast RPC: Executed on the server and all relevant connected clients simultaneously
 */*/
 
-// stubb
-RPC :: proc (proc: RPC_Proc, synchronous: bool) -> bool {
+RPC_Proc :: struct {
+    
+}
+
+// Stubb
+RPC :: proc(rpc_proc: RPC_Proc, synchronous: bool) -> bool {
+    received: bool = false
     // Stubb
     log.warn("RPC is a stubb")
-    return RECIEVED
+    return received
 }
