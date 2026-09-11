@@ -6,7 +6,7 @@ import "../../Core"
 // === MODULE_IDENTITY (parsed by rbs) ===
 IDENTITY :: Core.Lib_Descriptor {
 	api_version      = Core.LIB_API_VERSION,
-	name             = "BF_ECS",
+	name             = "BF_REP",
 	version          = Core.Version{0, 0, 1},
 	author           = "armscream",
 	description      = "Minimal BF_ECS: entity storage, world partition, and DAG-registered ECS systems.",
@@ -41,4 +41,32 @@ MODULE_API := Core.LIB_API {
 	activate   = module_activate,
 	deactivate = module_deactivate,
 	unload     = module_unload,
+}
+
+when #config(BUILDING_REP_DLL, false) {
+	@(export)
+	bifrost_lib_get_api :: proc() -> ^Core.LIB_API {
+		return &MODULE_API
+	}
+}
+
+module_load :: proc(ctx: ^Core.Lib_Context) -> bool {
+	_ = ctx
+	log.warn("[REP] module loaded — implementation pending")
+	return true
+}
+module_register :: proc(ctx: ^Core.Lib_Context) -> bool {
+	_ = ctx
+	return true
+}
+module_activate :: proc(ctx: ^Core.Lib_Context) -> bool {
+	_ = ctx
+	return true
+}
+module_deactivate :: proc(ctx: ^Core.Lib_Context) {
+	_ = ctx
+}
+module_unload :: proc(ctx: ^Core.Lib_Context) {
+	_ = ctx
+	log.warn("[REP] module unloaded")
 }
